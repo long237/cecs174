@@ -33,7 +33,7 @@ current = 1
 for i in range(9):
     print_board(board)
     if is_winner(board) == True:
-        break
+        pass
     r = int(input("Enter row "))
     c = int(input("Enter column "))
     while not is_valid(r,c,board):
@@ -44,5 +44,7 @@ for i in range(9):
         current = 2
     else:
         current = 1
+
+main()
 
 

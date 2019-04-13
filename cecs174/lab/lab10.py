@@ -21,23 +21,23 @@ def is_valid(r, c, board):
         return False
     if c < 0 or c > 2:
         return False
-    if board[r][c] == 0:
+    if board[r + 1][c + 1] == 0:
         return True
     return False
 
 def is_winner(board):
     #row check
     for r in range(len(board)):
-        if board[r][0] == board[r][1]== board[r][2] and board[r][0] != 0:
+        if board[r][1] == board[r][2]== board[r][3] and board[r][1] != 0:
             return True
     #column check
     for c in range(len(board)):
-        if board[0][c] == board[1][c] == board[2][c] and board[0][c] !=0:
+        if board[1][c] == board[2][c] == board[3][c] and board[1][c] !=0:
             return True
     #diagonal check
-    if board[0][0] == board[1][1] == board[2][2] and board[0][0] != 0:
+    if board[1][1] == board[2][2] == board[3][3] and board[1][1] != 0:
         return True
-    if board[2][0] == board[1][1] == board[0][2] and board[2][0] != 0:
+    if board[1][3] == board[2][2] == board[3][1] and board[1][3] != 0:
         return True
     return False
 
@@ -55,6 +55,11 @@ def main():
     for i in range(9):
         print_board(board)
         if is_winner(board) == True:
+            if current - 1 == 1:
+                print('X is the winner')
+            else:
+                print('O is the winner')
+            
             break
 
         print_turn(current)
@@ -64,7 +69,7 @@ def main():
             r = int(input("Give Row!"))
             c = int(input("Give Column!"))
 
-        board[r][c] = current
+        board[r + 1][c + 1] = current
         if current == 1:
             current = 2
         else:
